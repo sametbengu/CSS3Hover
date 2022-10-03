@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kullanıcı Giriş Ekranı</title>
+        <link rel="stylesheet" href="girisyapstyle.css">
+        <link rel="stylesheet" href="kayıtolstyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    </head>
+    <body>
+        <div class="login-form">
+            <form action="index.html">
+                <h1>ShowmeQR <br>LOGIN</h1>
+                <input type = "email" name="email" required placeholder="Mailinizi Giriniz" class="email">
+                <input type=password name="sifre" required placeholder="Sifrenizi Giriniz" class="password">     
+                <input type="submit" value="Giriş Yap" class="login">
+                <a class="kayıtol" href="#">Kayıt Ol</a>
+            </form>
+        </div>
+        <div class="signup-form">
+            <form action="index.html">
+                <h1>SIGN UP</h1>
+                <input type = "text" name="ad" required placeholder="İsminizi Giriniz" class="txt">
+                <input type = "text" name="soyad" required placeholder="Soyisminizi Giriniz" class="txt"> 
+                <input type = "email" name="email" required placeholder="Mailinizi Giriniz" class="txt">
+                <input type=password name="sifre" required placeholder="Sifrenizi Giriniz" class="txt">  
+                <input type="password" name="sifreOnayla" required placeholder="Sifrenizi Onaylayınız"class="txt">
+                <input type = "tel" name="telefon"  placeholder="Telefon Numaranız"class="txt">
+                <input type = "date" class="txt">     
+                <input type="submit" value="Kayıt Ol" class="signup-btn">
+                <a href="#" class="girisyapagit">Zaten bir hesabım var</a>
+            </form>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(()=>{
+            
+            $('.signup-form').hide();
+            $('.kayıtol').click((e)=>{
+            e.preventDefault();
+                    $('.login-form').hide();
+                    $('.signup-form').show();
+
+            });
+            $('.girisyapagit').click((e)=>{
+            e.preventDefault();
+                    $('.login-form').show();
+                    $('.signup-form').hide();
+            });
+            $('.login').click((e)=>{
+            e.preventDefault();
+            var mail=$('.email').val();
+            var parola=$('.password').val();
+            if(mail=="atakan@hotmail.com" && parola=="123"){
+                toastr["success"]("Hoşgeldiniz "+mail, "Başarılı Giriş");
+            }else{
+                e.preventDefault();
+                toastr["error"]("Lütfen tekrar deneyiniz", "Hatalı Giriş");
+            }   
+            
+            });
+        });
+    </script>
+</html>
